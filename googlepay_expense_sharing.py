@@ -57,7 +57,7 @@ if __name__ == "__main__":
         amount = float(input("enter the amount paid:"))
 
         participants = input("Enter the names of participants for this expenses, seperated by commas:").split(",")
-        participants = [participants.strip() for participant in participants]
+        participants = [participant.strip() for participant in participants]
 
         expense_sharing.add_expense(payer, amount, participants)
         
