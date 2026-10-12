@@ -16,8 +16,6 @@ A Python-based expense tracking and debt settlement tool inspired by Google Pay'
 ## Tech Stack
 
 - **Language:** Python 3.x
-- **Libraries:**
-  - `pandas` (transaction tracking and tabular logging)
 
 ---
 
@@ -43,7 +41,7 @@ A Python-based expense tracking and debt settlement tool inspired by Google Pay'
 
 2. **Install Dependencies:**
    ```bash
-   pip install python pandas 
+   pip install python 
 
 3.**Run the program:**
    ```bash
