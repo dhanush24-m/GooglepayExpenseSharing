@@ -43,7 +43,7 @@ A Python-based expense tracking and debt settlement tool inspired by Google Pay'
 
 2. **Install Dependencies:**
    ```bash
-   pip install pandas numpy matplotlib
+   pip install python pandas 
 
 3.**Run the program:**
    ```bash
