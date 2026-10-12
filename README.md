@@ -49,7 +49,7 @@ A Python-based expense tracking and debt settlement tool inspired by Google Pay'
 
 3.**Run the program:**
    ```bash
-python Project_GooglePay_Expense_Sharing.py
+python GooglePay_Expense_Sharing.py
  
 
 
