@@ -18,8 +18,6 @@ A Python-based expense tracking and debt settlement tool inspired by Google Pay'
 - **Language:** Python 3.x
 - **Libraries:**
   - `pandas` (transaction tracking and tabular logging)
-  - `numpy` (numerical calculations)
-  - `matplotlib.pyplot` (data visualization)
 
 ---
 
