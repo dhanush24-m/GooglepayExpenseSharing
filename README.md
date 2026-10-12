@@ -1,15 +1,29 @@
 # Google Pay Expense Sharing  System
 
-A Python-based expense tracking and debt settlement tool inspired by Google Pay's group bill split functionality. The application tracks shared group expenditures and calculates optimal settlements to clear all debts.
+A lightweight Python application designed to track shared group expenses and calculate simplified settlements between friends, mimicking peer-to-peer bill-splitting workflows.
 
 ---
 
-## Key Features
+## Features
 
-- **Group Initialization:** Create custom groups with multiple participants.
-- **Dynamic Expense Splitting:** Split bills equally among specified subsets of group members.
-- **Transaction Logging:** Store transaction history (Payer, Amount, Participants) in structured Pandas DataFrames.
-- **Automated Debt Settlement:** Calculate net balances and resolve inter-member debts using a greedy balance-offset algorithm.
+- **Dynamic Group Setup**: Initialize balances for any number of friends.
+- **Split Expense Management**: Automatically divide expenses equally among specific participants while crediting the payer.
+- **Settlement Minimization**: Uses a greedy debtor–creditor algorithm to settle debts with fewer individual transactions.
+- **Interactive CLI**: Easy-to-use command-line interface for inputting transactions dynamically.
+
+---
+
+## Workflow & Architecture
+
+1. **Initialization**: Group members are registered with net balances initialized to zero.
+2. **Expense Logging**:
+   - Each transaction calculates `split_amount = total_amount / number_of_participants`.
+   - Each participant's balance decreases by `split_amount`.
+   - The payer's balance increases by `total_amount`.
+3. **Settlement Resolution**:
+   - Members with negative balances are marked as **debtors**.
+   - Members with positive balances are marked as **creditors**.
+   - The system pairs debtors and creditors iteratively, clearing debts by transferring `min(debt, credit)` until all balances reach zero.
 
 ---
 
@@ -19,19 +33,6 @@ A Python-based expense tracking and debt settlement tool inspired by Google Pay'
 
 ---
 
-## System Architecture & Workflow
-
-1. **Initialization:** The `ExpenseSharing` class initializes a dictionary mapping each friend to a zero net balance and creates an empty transactions table.
-2. **Expense Addition:** 
-   - When a user pays for an expense, the total cost is divided equally across all participants.
-   - Each participant's balance decreases by `amount / N`.
-   - The payer's balance increases by `amount`.
-   - The transaction details are appended to the DataFrame log.
-3. **Settlement Calculation:**
-   - Members are partitioned into **creditors** (net positive balance) and **debtors** (net negative balance).
-   - A greedy loop matches debtors with creditors to settle payments until all net balances are cleared.
-
----
 
 ## Installation & Setup
 
