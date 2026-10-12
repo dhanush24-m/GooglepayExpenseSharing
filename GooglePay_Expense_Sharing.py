@@ -42,6 +42,28 @@ class ExpenseSharing:
             payment = min(debt_amount, credit_amount)
             print(f"{debtor} owes {creditor}: rs. {payment:.2f}")
 
+
+if __name__ == "main":
+    
+    friends = input("Enter the names of friends, sepearted by commas:").split(",")
+    friends = [friend.strip() for friend in friends]
+
+    expense_sharing = ExpenseSharing(friends)
+
+    while True:
+        payer = input("Enter the name of thr person who paid(of 'done' to finish:)")
+        if payer.lower() == "done":
+            break
+
+        amount = float(input("Enter the amount Paid:"))
+
+        participants  = input("Enter the names of partcipants for this expense, seperated by commas:").split(",")
+
+        participants = [participants.strip() for participant in participants]
+
+        expense_sharing.add_expense(payer, amount,participants)
+        print("\n Final settelement")
+        expense_sharing.calculate_settlement()
             if debt_amount > payment:
                 debtors.append((debtor, debt_amount - payment))
             if credit_amount >payment:
