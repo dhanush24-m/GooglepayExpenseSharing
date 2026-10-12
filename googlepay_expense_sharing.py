@@ -1,29 +1,13 @@
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
 class ExpenseSharing:
     def __init__(self, friends):
         self.freinds = friends
         self.balances = {friend: 0 for friend in friends}
-        self.transactions = pd.DataFrame(columns=[
-            'Payer', 'Amount', 'Participants'
-        ])
-        self.transaction_counter = 1
 
     def add_expense(self, payer, amount, participants):
         split_amount = amount / len(participants)
         for participant in participants:
                self.balances[participant] -= split_amount
         self.balances[payer] += amount
-
-        new_tx = pd.DataFrame([{
-            'Payer': payer,
-            'Amount': amount,
-            'Participants': ", ".join(participants)
-        }])
-        
-        self.transactions = pd.concat([self.transactions, new_tx], ignore_index=True)
-        self.transaction_counter += 1
         
     def calculate_settlement(self):
         creditors = []
@@ -41,6 +25,12 @@ class ExpenseSharing:
 
             payment = min(debt_amount, credit_amount)
             print(f"{debtor} owes {creditor}: rs. {payment:.2f}")
+
+            if debt_amount > payment:
+                debtors.append((debtor, debt_amount - payment))
+            if credit_amount >payment:
+                creditors.append((creditor, credit_amount - payment))
+
 
 if __name__ == "__main__":
     friends = input("enter the names of friends, separeted by commas:"). split(",")
